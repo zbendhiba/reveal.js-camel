@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Apache Camel K - supersonic subatomic integrations on Kubernetes and Knative</title>
+        <title>Apache Camel integrations in the age of Quarkus, Knative and Kafka Connect</title>
 
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/camel.css">
@@ -31,9 +31,11 @@
             <div class="slides">
                 <section>
                     <section data-state="no-footer">
-                        <img data-src="css/theme/camel-assets/images/camel-k.svg" alt="Apache Camel K" class="plain" style="width: 1 0em">
+                        <img data-src="css/theme/camel-assets/images/camel.svg" alt="Apache Camel K" class="plain" style="width: 8em">
                         <br><br>
-                        <h3>supersonic subatomic integrations<br>on Kubernetes and Knative</h3>
+                        <h2>Integrating systems</h2>
+                        <h4 style="font-size: 28px">in the age of</h4>
+                        <h4>Quarkus, Knative and Kafka Connect</h4>
                         <p>&nbsp;</p>
                         <p>Peter Palaga</p>
                         <p>
@@ -41,20 +43,29 @@
                         </p>
                     </section>
                     <section id="peter-palaga">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="images/red-hat-fuse-logo.svg" style="height: 2em">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="css/theme/camel-assets/images/camel.svg" style="height: 2em; margin-left: 2em; margin-right: 2em">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="2" src="images/camel-quarkus-with-text-vertical.svg" style="height: 3em; margin-bottom: -0.5em">
                         <h2 style="margin: 1em">Peter Palaga</h2>
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="3" src="images/eap-wildfly-logo.svg" style="height: 2em;  margin-bottom: -0.5em">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="4" src="images/srcdeps-logo-with-text.svg" style="height: 1em; margin-left: 3em; margin-right: 2.5em">
-                        <img class="fragment fade-in-then-semi- out" data-fragment-index="4" src="images/ec4j-logo-with-name.svg" style="height: 1em">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="images/red-hat-integration-logo.svg" style="height: 2em">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="css/theme/camel-assets/images/camel.svg" style="height: 2em; margin-left: 2em; ">
+                        <!--
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="2" src="images/camel-quarkus-with-text-vertical.svg" style="height: 3em; margin-bottom: -0.5em">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="3" src="images/srcdeps-logo-with-text.svg" style="height: 1em; margin-left: 1em; margin-right: 2.5em">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="3" src="images/ec4j-logo-with-name.svg" style="height: 1em; margin-right: 2.5em; ">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="4" src="images/mvnd-logo.svg" style="height: 2.5em;  margin-bottom: -0.7em">
+                        -->
+                    </section>
+                    <section id="mvnd">
+                        <p><code>mvnd</code> - the Maven Daemon</p>
+                        <img src="images/mvnd-0.4.2.gif">
+                        <p style="font-size: 1.5rem;"><a href="https://github.com/mvndaemon/mvnd" target="_blank">https://github.com/mvndaemon/mvnd</a></p>
+                        <p><a href="https://twitter.com/mvndaemon" rel="nofollow"><img src="https://camo.githubusercontent.com/eca91a719d9b5623bbf24a22ddc4ade4170bf95daf20921f561d1140887db9c1/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f75726c2f68747470732f747769747465722e636f6d2f6d766e6461656d6f6e2e7376673f7374796c653d736f6369616c266c6162656c3d466f6c6c6f772532302534306d766e6461656d6f6e" alt="Twitter" data-canonical-src="https://img.shields.io/twitter/url/https/twitter.com/mvndaemon.svg?style=social&amp;label=Follow%20%40mvndaemon" style="max-width:100%;"></a></p>
                     </section>
                     <section>
                         <h2>Agenda</h2>
                         <ul>
                             <li>Apache Camel intro</li>
-                            <li>Apache Camel Quarkus</li>
-                            <li>Apache Camel K</li>
+                            <li>Camel on Quarkus</li>
+                            <li>Camel on Knative/Kubernetes</li>
+                            <li>Camel on Kafka Connect</li>
                         </ul>
                     </section>
                 </section>
@@ -62,21 +73,6 @@
                     <section>
                         <h2>What is Apache Camel?</h2>
                         <a href="http://camel.apache.org/">http://camel.apache.org/</a>
-
-                        <br><br>
-                        <p class="fragment">Since 2007</p>
-                    </section>
-                    <section>
-                        <h2>Huge community</h2>
-                        <ul class="no-bullet">
-                            <li>~500 contributors</li>
-                            <li>~2900 stars on <a href="https://github.com/apache/camel">Github</a></li>
-                            <li>~3700 forks on <a href="https://github.com/apache/camel">Github</a></li>
-                            <li>~1000 subscribers on the <a href="http://mail-archives.apache.org/mod_mbox/camel-users/">Users mailing list</a></li>
-                            <li>~9000 questions on <a href="https://stackoverflow.com/questions/tagged/apache-camel">StackOverFlow</a></li>
-                        </ul>
-                        <br>
-                        <p>Follow <a href="https://twitter.com/ApacheCamel">@ApacheCamel</a> (new) on Twitter!</p>
                     </section>
                     <section>
                         Apache Camel is...
@@ -99,41 +95,44 @@
                         Apache Camel can...
                         <h2>integrate anything</h2>
                         <p>through its</p>
-                        <h2>~300 components</h2>
+                        <h2>360+ components</h2>
                     </section>
                     <section>
                         <table id="camel-components" class="plaintable">
                             <tr>
-                                <td class="fragment visible"><p>Filetypes:</p>
+                                <td><p>Filetypes:</p>
                                     <ul>
                                         <li>Plaintext, XML, HTML, CSV, JSON, ZIP, ...</li>
                                         <li>Apache Tika (MS Office, OpenDocument, ...)</li>
                                     </ul>
                                 </td>
-                                <td class="fragment"><p>Protocols:</p>
+                                <td><p>Protocols:</p>
                                     <ul>
-                                        <li>AMQP, DNS, FTP, HTTP, IRC, SSH, TCP/UDP, ...</li>
+                                        <li>TCP/UDP, DNS, FTP, HTTP, IRC, SSH, ...</li>
                                         <li>REST, GRPC, git, ...</li>
                                         <li>IoT: CoAP, MQTT, PubNub</li>
                                     </ul>
                                 </td>
-                                <td class="fragment"><p>Public&nbsp;Clouds:&nbsp;&nbsp;&nbsp;</p>
+                                <td><p>Public/private&nbsp;Clouds:&nbsp;&nbsp;&nbsp;</p>
                                     <ul>
                                         <li>AWS: S3, SQS, Kinesis, ...</li>
                                         <li>Azure: Blob, Queue, ...</li>
                                         <li>Google: BigQuery, PubSub</li>
+                                        <li>DigitalOcean, Kubernetes, OpenShift, etcd, Docker</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="fragment"><p>Enterprise:</p>
+                                <td><p>Data & messaging</p>
                                     <ul>
-                                        <li>Caches: Hazelcast, Infinispan, Redis, ...</li>
-                                        <li>Cassandra, MongoDB, Kafka</li>
-                                        <li>JDBC, SQL, JPA, CDI, EJB, JMS, JMX, OpenTracing, OptaPlanner, Syslog, </li>
+                                        <li>Hazelcast, Infinispan, Redis, ...</li>
+                                        <li>Cassandra, MongoDB</li>
+                                        <li>JDBC, SQL, JPA</li>
+                                        <li>Kafka, Debezium</li>
+                                        <li>JMS, AMQP, QPID, STOMP</li>
                                     </ul>
                                 </td>
-                                <td class="fragment"><p>APIs:</p>
+                                <td><p>APIs:</p>
                                     <ul>
                                         <li>Social: Facebook, Twitter, LinkedIn</li>
                                         <li>Box, Dropbox, Google Calendar/Drive/Mail/Docs</li>
@@ -141,15 +140,16 @@
                                         <li>GitHub, Jira, Telegram</li>
                                     </ul>
                                 </td>
-                                <td class="fragment"><p>Misc:</p>
+                                <td><p>Misc:</p>
                                     <ul>
                                         <li>Barcode</li>
                                         <li>Base64, JsonPath, Freemarker, Groovy, Mustache, Ruby</li>
-                                        <li>Docker, etcd, Kubernetes, OpenShift, </li>
+                                        <li>JMX, OpenTelemetry, OpenTracing, OptaPlanner, Syslog</li>
                                     </ul>
                                 </td>
                             </tr>
                         </table>
+                        <p style="font-size: 1.5rem">... and <a href="https://camel.apache.org/components/latest/">many more</a>
                     </section>
                     <section>
                         Routes defined via
@@ -163,25 +163,23 @@
                                 <td><pre style="width: 100%; margin: 0px; font-size: 0.4em"><code class="hljs java">class MyCamelRouter extends RouteBuilder {
   @Override
   public void configure() throws Exception {
-    from("twitter-search:"
-        + "word1,word2")
-      .log("Got a tweet: ${body}")
+    from("aws2-s3://my-bucket?prefix=hello.txt")
+      .log("Got an S3 file: ${body}")
       .to("telegram:bots");
   }
 }</code></pre></td>
                                 <td><pre style="width: 100%; margin: 0px; font-size: 0.4em"><code class="hljs xml">&lt;routes
   xmlns="http://camel.apache.org/schema/spring">
   &lt;route id="my-route">
-    &lt;from uri="twitter-search:word1,word2"/>
-    &lt;log message="Got a tweet: ${body}"/>
+    &lt;from uri="aws2-s3://my-bucket?prefix=hello.txt"/>
+    &lt;log message="Got an S3 file: ${body}"/>
     &lt;to uri="telegram:bots"/>
   &lt;/route>
 &lt;/routes>
-
 </code></pre></td>
                             </tr>
                         </table>
-                        <p>Groovy, Scala, Kotlin, ...</p>
+                        <p>Groovy, Scala, Kotlin, YAML, ...</p>
                     </section>
                     <section>
                         Apache Camel is...
@@ -189,205 +187,167 @@
                         <br>
                         <table>
                             <tr>
-                                <td style="border-bottom: none; vertical-align: middle; padding: 0px; width: 350px"><img alt="Spring Boot" src="images/icon-spring-boot.svg" style="vertical-align: middle; width: 60px">&nbsp;Spring&nbsp;Boot</td>
-                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 20px 0px 0px"><img alt="Apache Karaf" src="images/karaf-logo.png" style="width: 350px;"></td>
-                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 0px 0px 25px"><img alt="WildFly" src="images/wildfly_logo.svg" style="width: 350px"></td>
+                                <td colspan="3" class="fragment" style="border-bottom: none; vertical-align: middle; padding-bottom: 30px; text-align: center;"><img src="css/theme/camel-assets/images/camel-circle.svg" style="vertical-align: middle; width: 1.4em; margin-bottom: 8px"> Standalone</td>
                             </tr>
-                            <tr>
-                                <td colspan="3" style="border-bottom: none; vertical-align: middle; padding-top: 30px; text-align: center;">Standalone <img alt="WildFly" src="images/quarkus-logo.svg" style="width: 250px; margin-left: 80px; margin-bottom: -8px"></td>
+                            <tr class="fragment">
+                                <td style="border-bottom: none; vertical-align: middle; padding: 0px; width: 340px"><img alt="Spring Boot" src="images/icon-spring-boot.svg" style="vertical-align: middle; width: 60px">&nbsp;Spring&nbsp;Boot</td>
+                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 20px 0px 0px; text-align: center"><img alt="Apache Karaf" src="images/karaf-logo.png" style="width: 350px;"></td>
+                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 0px 0px 50px"><img alt="WildFly" src="images/wildfly_logo.svg" style="width: 350px"></td>
                             </tr>
-                        </table>
-                    </section>
-                    <section>
-                        <h2>Apache Camel 3</h2>
-
-                        <table class="plaintable">
-                            <tr>
-                                <td style="width: 50%; font-size: 32px"><ul style="display: block;">
-                                    <li class="fragment">~November 2019</li>
-                                    <!-- Removed @Deprecated -->
-                                    <li class="fragment">Tidy up APIs &amp; cleanup of technical debt</li>
-                                    <!-- Faster startup and lower footprint,
-                                        hooks for Quarkus, JMX optional,
-                                        generated code to avoid reflection -->
-                                    <li class="fragment">Light-weight &amp; modular camel-core</li>
-                                    <li class="fragment">Camel Main</li>
-                                    <li class="fragment">Reactive Routing Engine</li>
-                                    <!-- Bootstrap for Camel K & Camel Quarkus,
-                                         application.properties a la Spring Boot
-                                         MP Config, Metrics, Health Checks
-                                    -->
-                                </ul></td>
-                                <td style="width: 50%; font-size: 32px"><ul style="display: block;">
-                                    <li class="fragment">Backwards compatible (for most users)</li>
-                                    <li class="fragment">Fluent Builder Endpoint configuration (Java &amp; XML)</li>
-                                    <li class="fragment">Java 11 support</li>
-                                    <li class="fragment">New <a href="https://camel.apache.org">website</a></li>
-                                    <li class="fragment">Camel Quarkus and Camel-K</li>
-                                </ul></td>
+                            <tr class="fragment">
+                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 0px 0px 15px; width: 340px"><img alt="Quarkus" src="images/quarkus-logo.svg" style="width: 250px; margin-bottom: -8px"></td>
+                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 20px 0px 0px; font-size: 28px; white-space: nowrap; text-align: center"><img alt="Apache Karaf" src="images/knative-logo.png" style="vertical-align: middle; width: 60px">&nbsp;Knative/Kubernetes</td>
+                                <td style="border-bottom: none; vertical-align: middle; padding: 0px 0px 0px 50px"><img alt="WildFly" src="images/apache-kafka-connect.svg" style="width: 350px"></td>
                             </tr>
                         </table>
                     </section>
                 </section>
-                <section>
-                    <section>
-                        <h1>What is</h1>
-                        <img src="images/quarkus-logo.svg" style="height: 2em;">
-                        <h1>?</h1>
+                <section id="quarkus">
+                    <section id="quarkus-build-time-toolkit">
+                        <div style="position: absolute; float: left; margin-left: -100px; margin-top: 0px;">
+                        <img src="images/quarkus-logo.svg" style="">
+                        <p style="font-size: 0.8em;">a build time toolkit</p>
+                        </div>
+                        <img style="width: 100%; margin-bottom: 20px" alt="" src="images/jvm-graalvm-targets.svg">
                     </section>
-                    <section>
-                        <img src="images/quarkus-logo.svg" style="height: 1.5em;">
-                        <p>Supersonic, subatomic Java!</p>
+                    <section id="why-camel-on-quarkus">
+                        <h2>Why Camel on Quarkus?</h2>
+                        <p>&nbsp;</p>
+                        <table id="container-first" class="plaintable" style="font-size: 2.0rem;">
+                            <colgroup>
+                                <col style="width:0.5em; border-right: 0.5em solid #00000000;">
+                                <col style="width:12em">
+                                <col style="width:0.5em; border-right: 0.5em solid #00000000;">
+                                <col style="width:18em">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td><a>💾</a></td>
+                                    <td>Small&nbsp;size&nbsp;on&nbsp;disk</td>
+                                    <td><a>✓</a></td>
+                                    <td>Small&nbsp;container&nbsp;images</td>
+                                </tr>
+                                <tr>
+                                    <td><a>🚀</a></td>
+                                    <td>Fast boot time</td>
+                                    <td><a>✓</a></td>
+                                    <td>Instant scale up</td>
+                                </tr>
+                                <tr>
+                                    <td><a>🔬</a></td>
+                                    <td>Low&nbsp;memory&nbsp;footprint</td>
+                                    <td><a>✓</a></td>
+                                    <td>More containers with the same amount of RAM</td>
+                                </tr>
+                             </tbody>
+                        </table>
                     </section>
-                    <section>
-                        <h2>Why do we need<br>Quarkus in Camel?</h2>
-                        <ul>
-                            <li>Java sucks in containers</li>
-                            <li>Serverless functions need fast startup</li>
+                    <section id="devjoy">
+                        <small>Why Quarkus?</small>
+                        <h2>Developer joy</h2>
+                        <ul class="check">
+                            <li class="fragment">Live reload:<br>
+                                <code>mvn compile quarkus:dev</code></li>
+                            <li class="fragment">Isolation from GraalVM CLI/SPI config</li>
+                            <li class="fragment">Rich ecosystem of extensions</li>
                         </ul>
                     </section>
+
                     <section>
                         <img src="images/camel-quarkus-with-text-vertical.svg" style="height: 2em; float: right">
                         <h2>Camel Quarkus</h2>
-                        <ul>
-                            <li>Started about a year ago inside <a href="https://github.com/quarkusio/quarkus">Quarkus</a></li>
-                            <li>Now <a href="https://github.com/apache/camel-quarkus">https://github.com/apache/camel-quarkus</a></li>
-                            <li>34 components supported</li>
-                            <li>Soon on <a href="https://code.quarkus.io">code.quarkus.io</a></li>
+                        <ul class="no-bullet">
+                            <li><br><small>As of v1.7.0, Feb. 2021:</small></li>
+                            <li>~90% of Camel components <a href="https://camel.apache.org/camel-quarkus/latest/list-of-camel-quarkus-extensions.html">ported</a></li>
+                            <li>~¼ JVM only</li>
+                            <li><br>Available on <a href="https://code.quarkus.io" target="_blank">code.quarkus.io</a></li>
                         </ul>
+                        <p></p>
                     </section>
                     <section>
                         <h1>Camel Quarkus Demo</h1>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h1>Apache Camel K</h1>
-                    </section>
-                    <section>
-                        <small>Camel K</small>
-                        <h2>Motivations</h2>
-                        <ul>
-                            <li>Low code/no code integrations: <a href="https://syndesis.io/">Syndesis</a></li>
-                            <li style="visibility: hidden">A "glue" for Serverless Functions (read: Knative)</li>
-                        </ul>
-                        <br>
-                        <br>
-                        <div style="visibility: hidden">
-                            <p>&#x2BA4; characterized by:</p>
-                            <ul>
-                                <li>Fast prototyping</li>
-                                <li>Simple or no business logic</li>
-                                <li>Low memory and CPU usage  esp. during startup</li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section data-state="no-footer" data-background-image="images/syndesis-ui.png" data-background-size="contain">
-                        <div class="fragment" style="background-color: #fffd; padding: 1em">
-                            <ul>
-                                <li style="background-color: #fffd">Web UI</li>
-                                <li style="background-color: #fffd">For "Citizen integrators"</li>
-                                <li style="background-color: #fffd">Integrations (Camel)</li>
-                                <li style="background-color: #fffd">API design (Apicur.io)</li>
-                                <li style="background-color: #fffd">API managemtent (3scale)</li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section>
-                        <h2>New areas of interest</h2>
-                        <ul>
-                            <li>Low code/no code integrations: <a href="https://syndesis.io/">Syndesis</a></li>
-                            <li class="fragment">A "glue" for Serverless Functions (read: Knative)</li>
-                        </ul>
-                        <br>
-                        <br>
-                        <div class="fragment">
-                            <p>&#x2BA4; characterized by:</p>
-                            <ul>
-                                <li>Fast prototyping</li>
-                                <li>Simple or no business logic</li>
-                                <li>Fast startup, low memory footprint</li>
-                            </ul>
-                        </div>
+                        <br><br>
+                        <p>Demo code:<br><a href="https://github.com/ppalaga/camel-quarkus-cnorris-demo" target="_blank">github.com/ppalaga/camel-quarkus-cnorris-demo</a></p>
                     </section>
                     <!--<section>
-                        Welcome
-                        <h2>Apache Camel K!</h2>
+                        <h1>Camel Quarkus links</h1>
                         <br>
-                        <p>Subproject of Apache Camel<br>since Aug. 31st. 2018</p>
+                        <ul>
+                            <li>Project starter <a href="https://code.quarkus.io/">code.quarkus.io</a></li>
+                            <li><a href="https://camel.apache.org/camel-quarkus/latest/reference/index.html">Supported Camel components</a></li>
+                            <li><a href="https://camel.apache.org/camel-quarkus/latest/user-guide.html">User guide</a></li>
+                            <li><a href="https://github.com/apache/camel-quarkus/tree/master/examples">Examples</a></li>
+                        </ul>
                     </section>-->
+                </section>
+                <section id="camel-k">
+                    <section>
+                        <h1>How can we deploy on Kubernetes?</h1>
+                    </section>
+                    <section>
+                        <h1>Provided by Quarkus</h1>
+
+                        <ul class="no-bullet">
+                            <li>Build and push an image
+                                <ul class="bullet" style="font-size: 1.5rem;">
+                                    <li><code>quarkus-container-image-jib</code></li>
+                                    <li><code>quarkus-container-image-docker</code></li>
+                                    <li><code>quarkus-container-image-s2i</code></li>
+                                </ul>
+                            </li>
+                            <li><br>Generate Kubernetes resources
+                                <ul class="bullet" style="font-size: 1.5rem;">
+                                    <li><code>quarkus-kubernetes</code></li>
+                                    <li><code>quarkus-minikube</code></li>
+                                    <li><code>quarkus-openshift</code></li>
+                                    <li><code>quarkus-kubernetes-config</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                            <p style="font-size: 1.5rem;"><br>Watch
+                                <a target="_blank" href="https://www.youtube.com/watch?v=gyOe-m-kltw">Quarkus Insights #15: Kubernetes and OpenShift with Quarkus</a></p>
+                    </section>
+                    <section>
+                        <h2>How fast can you (re-)deploy?</h2>
+                        <ul class="no-bullet">
+                            <li class="fragment">Jib (minimal app):
+                                <ul>
+                                    <li>~10s with local Docker daemon</li>
+                                    <li>add 3+ seconds with remote registry</li>
+                                    <li>add 3+ seconds to redeploy inside the cluster</li>
+                                </ul>
+                            </li>
+                            <li class="fragment"><br>OpenShift s2i: ~1 min</li>
+                        </ul>
+                        <img class="fragment" alt="Can we do better?" src="images/can-we-do-better.png" style="float: left; position: absolute; margin-bottom: 0px;margin-left: -113px; z-index: 20">
+                    </section>
+                    <section id="yes-we-can" data-state="no-footer" data-background-image="images/smilling-camel.jpg">
+                        <div style="position: absolute; float: left; margin-left: -100px; margin-top: 450px;">
+                        <p style="font-size: 2.5em; font-weight: bold;">Camel K</p>
+                        <small style="font-size: 0.3em;">Image by <a href="https://www.flickr.com/photos/lanzen/5984113332">Anders Lanzen</a> CC BY-NC-SA 2.0</small>
+                        </div>
+                    </section>
+                    <section id="camel-k-dev-process">
+                        <h4>Camel K overview</h4>
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="images/camel-k-process-1.svg" style="height: 7.0em; margin-left: -1em;">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="2" src="images/camel-k-process-2.svg" style="height: 6.1em; margin-left: 1em; margin-right: 0em; margin-bottom: 1em;">
+                        <img class="fragment fade-in-then-semi-out" data-fragment-index="3" src="images/camel-k-process-3.svg" style="height: 7.0em; margin-left: -1em; margin-bottom: 4em;">
+                    </section>
                     <section>
                         <h2>Camel K demo</h2>
-                        <!-- Let's have a look what fast prototyping and simple routes mean here -->
+                        <p><a href="https://github.com/ppalaga/camel-quarkus-cnorris-demo#bonus-run-the-same-demo-with-camel-k">https://github.com/ppalaga/camel-quarkus-cnorris-demo</a></p>
                     </section>
                 </section>
-                <section>
-                    <section>
-                        <h2>Camel K internals</h2>
-                        <ul>
-                            <li><code>kamel</code> client side binary
-                                <ul>
-                                    <li><a href="https://github.com/apache/camel-k/releases">github.com/apache/camel-k/releases</a></li>
-                                </ul>
-                            </li>
-                            <li>Camel K Operator</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>What is Kubernetes Operator?</h2>
-                        <ul>
-                            <li>An Application Management concept</li>
-                            <li>Does what a human operator would have to do
-                                <ul>
-                                    <li>Based on declarative input<br><br></li>
-                                </ul>
-                            </li>
-                            <li class="fragment">A pattern</li>
-                            <li class="fragment">(Ex-)CoreOS <a href="https://coreos.com/operators/">Operator Framework</a></li>
-                        </ul>
-                    </section>
-                    <section>
-                        A Kubernetes Operator
-                        <h2>How it works</h2>
-                        <p class="fragment" style="text-align: left;">A running container</p>
-                        <ul>
-                            <li class="fragment">Monitors the cluster via Kubernetes API</li>
-                            <li class="fragment">Reacts:
-                                <ul>
-                                    <li>Add/remove/modify resources (pods/services/custom CRDs)</li>
-                                    <li>Scale up/down</li>
-                                    <li>Call endpoints of the running applications</li>
-                                </ul>
-                            </li>
-                            <li class="fragment">Implements <b>custom logic</b></li>
-                        </ul>
-                    </section>
-                    <section>
-                        Kubernetes
-                        <h2>Custom Resource Definitions (CRD)</h2>
-
-                        <table>
-                            <tr>
-                                <td><b>Built-in</b> resources
-                                    <ul>
-                                        <li>pods, services, ...</li>
-                                        <li><code>oc create</code>, <code>oc&nbsp;get</code>, <code>oc&nbsp;delete</code></li>
-                                    </ul></td>
-                                <td><b>CRDs</b>
-                                    <ul>
-                                        <li>Extend&nbsp;the&nbsp;cluster&nbsp;model</li>
-                                        <li><code>oc create</code>, <code>oc get</code>, <code>oc delete</code></li>
-                                        <li>Declarative input for operators</li>
-                                    </ul></td>
-                            </tr>
-                        </table>
-                    </section>
-
-                    <section>
-                        <h4>Camel K Operator</h4>
-
+                <!--
+                    Luca: https://developers.redhat.com/topics/camel-k
+                    * Camel K operator smart enough to create kube resources needed to run the integration,
+                      such as ingess of it is a from(HTTP*) route
+                    * Scale to 0 when none of the components needs a persistent connection
+                -->
+                <section id="camel-k-internals">
+                    <section id="how-camel-k-works">
+                        <h4>How Camel K works</h4>
                         <img alt="Camel K internals" src="images/camel-k-internals.svg">
-
                         <aside class="notes">
                             <code>kamel</code> client creates an `integration` resource in the cluster
                             The operator is notified
@@ -404,52 +364,15 @@
                             ~4 seconds for the simplest routes
                         </aside>
                     </section>
-                    <section>
-                        Apache Camel K
-                        <h2>Image resolution (1/2)</h2>
-                        <p style="text-align: left">Collect Maven dependencies based on</p>
-                        <ul>
-                            <li>DSL used (Groovy, XML, Java, Kotlin, JavaScript, YAML)</li>
-                            <li>Camel components used in the routes</li>
-                        </ul>
-                        <!-- Choose a runtime
-Scaffold a project
-Add boilerplate
-Add dependencies
-Create container image
-Create Kubernetes resources for deployment
- -->
-                    </section>
-                    <section>
-                        Apache Camel K
-                        <h2>Image resolution (2/2)</h2>
-                        <ul>
-                            <li>Based on the found dependency set
-                                <ul>
-                                    <li>Either take an available Image (buildless deploy)</li>
-                                    <li>Or build a new image</li>
-                                </ul>
-                            </li>
-                            <br>
-                            <li class="fragment ">Route definition not a part of the image
-                                <ul>
-                                    <li>Mounted to the container as a ConfigMap</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
                 </section>
-                <section>
-                    <section>
-                        <h2>Camel K on Knative</h2>
-                    </section>
+                <section id="camel-on-knative">
                     <section>
                         <img src="images/knative-logo.png" style="height: 2em; float: right">
-                        <h2>What is Knative?</h2>
+                        <h2>Knative</h2>
                         <ul>
                             <!--An extension of Kubernetes-->
                             <li class="fragment">Building blocks for Serverless applications</li>
-                             <li class="fragment">CRDs and operators</li>
+                            <li class="fragment">CRDs and operators</li>
                         </ul>
                         <table>
                             <tr>
@@ -460,88 +383,101 @@ Create Kubernetes resources for deployment
                         <p><a href="https://knative.dev">https://knative.dev</a></p>
                     </section>
                     <section>
-                        <small>Camel K</small>
+                        <small>Camel</small>
                         <h3>Knative Serving (1/2)</h3>
                         <img src="images/camel-knative-profile.svg">
                     </section>
                     <section>
-                        <small>Camel K</small>
+                        <small>Camel</small>
                         <h3>Knative Serving (2/2)</h3>
                         <img src="images/knative-serving-flow-1.svg">
                     </section>
                     <section>
-                        <small>Camel K</small>
+                        <small>Camel</small>
                         <h3>Knative Serving (2/2)</h3>
                         <img src="images/knative-serving-flow-2.svg">
                     </section>
                     <section>
-                        <small>Camel K</small>
+                        <small>Camel</small>
                         <h3>Knative Serving (2/2)</h3>
                         <img src="images/knative-serving-flow-3.svg">
                     </section>
                     <section>
-                        <h3>Knative Eventing</h3>
+                        <h4>Knative Eventing</h4>
                         <img src="images/knative-eventing-details.svg">
-                        <a href="https://cloudevents.io">https://cloudevents.io</a>
+                        <p style="font-size: 0.9rem; margin: 0px;"><a href="https://cloudevents.io">https://cloudevents.io</a></p>
+                    </section>
+                    <section id="camel-as-knative-source">
+                        <h4>Camel as Knative event source</h4>
+                        <img class="fragment" src="images/knative-camel-source-def.svg" style="position: absolute; height: 5em; top: 7.6em; left: 7.0em;">
+                        <img src="images/knative-camel-source.svg" style="height: 9em;">
+                        <br>
+                        <br>
+                    </section>
+                    <section id="camel-as-knative-sink">
+                        <h4>Camel as Knative event sink</h4>
+                        <img class="fragment" src="images/knative-camel-sink-def.svg" style="position: absolute; height: 5em; top: 7.6em; left: 5.0em;">
+                        <img src="images/knative-camel-sink.svg" style="height: 9em;">
+                        <br>
+                        <br>
+                    </section>
+                    <section id="camel-as-knative-router">
+                        <h4>Camel as Knative Event Router</h4>
+                        <img class="fragment" src="images/knative-camel-eip-source.svg" style="position: absolute; height: 6em; top: 7.6em; left: 4.0em;">
+                        <img src="images/knative-camel-eip.svg" style="height: 9em;">
+                        <br>
+                        <br>
+                    </section>
+                </section>
+                <section id="camel-kafka-connector">
+                    <section id="camel-head" data-state="no-footer" data-background-image="images/camel-head.jpg">
+                        <div style="position: absolute; float: left; margin-left: -150px; margin-top: 100px;">
+                        <p style="font-size: 2.5em; font-weight: bold;">Camel<br>Kafka<br>Connector</p>
+                        <small style="font-size: 0.3em;">Image <a href="https://pxhere.com/en/photo/1070685">source</a> CC0 Public Domain</small>
+                        </div>
                     </section>
                     <section>
-                        <small>Camel K as Knative</small>
-                        <h3>Event Consumer</h3>
-                        <img src="images/knative-eventing-camel-k-0.svg">
-                    </section>
-                    <section>
-                        <small>Camel K as Knative</small>
-                        <h3>Event Consumer</h3>
-                        <img src="images/knative-eventing-camel-k-1.svg">
-                    </section>
-                    <section>
-                        <small>Camel K as Knative</small>
-                        <h3>Event Consumer</h3>
-                        <img src="images/knative-eventing-camel-k-2.svg">
-                    </section>
-                    <section>
-                        <small>Camel K as Knative</small>
-                        <h3>Event Consumer</h3>
-                        <img src="images/knative-eventing-camel-k-3.svg">
-                    </section>
-                    <section>
-                        <small>Camel K as Knative</small>
-                        <h3>Event Consumer</h3>
-                        <img src="images/knative-eventing-camel-k-4.svg">
-                    </section>
-                    <section>
-                        <small>Camel K as Knative</small>
-                        <h3>Event Source</h3>
-                        <img src="images/camel-as-knative-event-source.svg">
-                    </section>
-                    <section>
-                        <small>Camel K</small>
-                        <h3>Roles in Knative Eventing</h3>
-                        <img src="images/knative-camel-roles.svg">
-                    </section>
-                    <section>
-                        <small>Apache Camel K</small>
-                        <h2>What comes next</h2>
+                        <img src="images/apache-kafka.svg">
                         <ul>
-                            <li>Camel K 1.0.0 after Knative 1.0 and Camel 3.0.0 GA</li>
-                            <li>Quarkus as integration runtime</li>
-                            <li>Tekton builds</li>
-                            <li>BDD testing</li>
-                            <li>IDE plugins</li>
+                            <li>A stream-processing platform</li>
+                            <li>Distributed, scalable, fault-tolerant, fast</li>
                         </ul>
+                    </section>
+                    <section>
+                        <h3>Apache Kafka API<span style="text-transform: none">s</span></h3>
+                        <ul>
+                            <li class="fragment fade-in-then-semi-out" data-fragment-index="1"><strong>Producer API</strong> - publish records to topics</li>
+                            <li class="fragment fade-in-then-semi-out" data-fragment-index="1"><strong>Consumer API</strong> - subscribe to topics to consume records</li>
+                            <li class="fragment fade-in-then-semi-out" data-fragment-index="1"><strong>Streams API</strong> - act as a stream processor/transformer</li>
+                            <li class="fragment fade-in-then-semi-out" data-fragment-index="2"><strong>Connector API, a.k.a. Kafka Connect</strong></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Kafka Connect</h3>
+                        <p><small>Stream data between Apache Kafka and other systems</small></p>
+                        <img src="images/kafka-connect.svg">
+                        <ul>
+                            <li class="fragment">A framework to write Connectors</li>
+                            <li class="fragment">A runtime to run them</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Camel Kafka Connector</h2>
+                        <img src="images/camel-kafka-connect-flow-single.svg">
+                        <p>350+ Camel components <a href="https://camel.apache.org/camel-kafka-connector/latest/connectors.html" target="_blank">supported</a></p>
                     </section>
                 </section>
                 <section>
-                    <!--<section>
-                        <h2>Apache Camel K wrap up</h2>
+                    <section id="wrap-up">
+                        <h2>Wrap up</h2>
                         <ul>
-                            <li>Operator based Kubernetes runtime for Camel</li>
-                            <li>Integrates well with Knative serveless components</li>
-                            <li>Fast prototyping</li>
-                            <li>Routes with simple/no business logic</li>
+                            <li class="fragment">Apache Camel - an integration lib with 360+ connectors</li>
+                            <li class="fragment">Supersonic subatomic on Quarkus</li>
+                            <li class="fragment">Producer/Consumer/Router, scale to zero on Knative</li>
+                            <li class="fragment">Streaming data from/to Kafka using Camel Kafka Connect</li>
                         </ul>
-                    </section>-->
-                    <section>
+                    </section>
+                    <section id="camel-links">
                         <img src="css/theme/camel-assets/images/camel.svg" style="height: 3em; margin-bottom: 1em">
                         <ul>
                             <li><a href="https://camel.apache.org">https://camel.apache.org</a></li>
@@ -552,7 +488,16 @@ Create Kubernetes resources for deployment
                         <br><br>
                         Feedback and contributions are welcome!
                     </section>
-                    <section data-state="no-footer" data-background-image="images/BaselOne19-sponsors.svg"></section>
+                    <!-- <section>
+                        <h2>Apache Camel community</h2>
+                        <ul class="no-bullet">
+                            <li>500+ contributors</li>
+                            <li>3.6k stars on <a href="https://github.com/apache/camel">Github</a></li>
+                            <li>4.2k forks on <a href="https://github.com/apache/camel">Github</a></li>
+                            <li>1k subscribers on the <a href="http://mail-archives.apache.org/mod_mbox/camel-users/">Users mailing list</a></li>
+                            <li>10.3k questions on <a href="https://stackoverflow.com/questions/tagged/apache-camel?tab=Newest">StackOverFlow</a></li>
+                        </ul>
+                    </section> -->
                 </section>
             </div>
         </div>

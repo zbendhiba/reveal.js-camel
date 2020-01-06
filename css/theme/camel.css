@@ -278,6 +278,9 @@ body {
 .reveal {
   font-weight: 300; }
 
+.reveal small {
+  vertical-align: inherit; }
+
 .reveal code {
   color: #7b4723;
   font-family: 'Roboto Mono', monospace; }
@@ -298,13 +301,28 @@ body {
   left: -0.6em;
   position: absolute; }
 
+.reveal li li::before {
+  color: #66544c;
+  content: '\25AA';
+  font-size: 0.9em;
+  left: -0.6em;
+  position: absolute;
+  top: 0.12em; }
+
 .reveal .no-bullet li::before {
   content: none;
   font-size: 1.1em;
   left: -0.6em;
   position: absolute; }
 
-.reveal li li::before {
+.reveal .bullet li::before {
+  color: #66544c;
+  content: '\2022';
+  font-size: 1.1em;
+  left: -0.6em;
+  position: absolute; }
+
+.reveal .bullet li li::before {
   color: #66544c;
   content: '\25AA';
   font-size: 0.9em;
@@ -374,8 +392,7 @@ table.plaintable {
 table.plaintable td {
   border-bottom: none;
   padding: 0px 0px 0px 0px;
-  vertical-align: top;
-  width: 33%; }
+  vertical-align: top; }
 
 #camel-components p {
   font-size: 28px;
