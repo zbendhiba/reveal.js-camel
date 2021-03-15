@@ -30,6 +30,10 @@
             </div>
             <div class="slides">
                 <section>
+                    <section>
+                        <p>The original reveal.js version of these slides looks a bit better than this PDF export:</p>
+                        <p><a href="https://peter.palaga.org/presentations/210317-camel/index.html#/">https://peter.palaga.org/presentations/210317-camel/index.html#/</a></p>
+                    </section>
                     <section data-state="no-footer">
                         <img data-src="css/theme/camel-assets/images/camel.svg" alt="Apache Camel K" class="plain" style="width: 8em">
                         <br><br>
@@ -42,16 +46,13 @@
                             <a href="https://twitter.com/ppalaga">@ppalaga</a>
                         </p>
                     </section>
-                    <section id="peter-palaga">
-                        <h2 style="margin: 1em">Peter Palaga</h2>
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="images/red-hat-integration-logo.svg" style="height: 2em">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="1" src="css/theme/camel-assets/images/camel.svg" style="height: 2em; margin-left: 2em; ">
-                        <!--
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="2" src="images/camel-quarkus-with-text-vertical.svg" style="height: 3em; margin-bottom: -0.5em">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="3" src="images/srcdeps-logo-with-text.svg" style="height: 1em; margin-left: 1em; margin-right: 2.5em">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="3" src="images/ec4j-logo-with-name.svg" style="height: 1em; margin-right: 2.5em; ">
-                        <img class="fragment fade-in-then-semi-out" data-fragment-index="4" src="images/mvnd-logo.svg" style="height: 2.5em;  margin-bottom: -0.7em">
-                        -->
+                    <section id="about-me">
+                        <img src="images/red-hat-integration-logo.svg" style="height: 2em;">
+                        <img src="css/theme/camel-assets/images/camel.svg" style="height: 2em; margin-left: 2em; ">
+                        <p>&nbsp;</p>
+                        <h2>My main job:</h2>
+                        <p><a href="https://github.com/apache/camel-quarkus" target="_blank">Camel Quarkus</a></p>
+                        <p>porting Camel componets to Quarkus</p>
                     </section>
                     <section id="mvnd">
                         <p><code>mvnd</code> - the Maven Daemon</p>
@@ -203,12 +204,18 @@
                     </section>
                 </section>
                 <section id="quarkus">
+                    <section id="yes-we-can" data-state="no-footer" data-background-image="images/cq-camel-animal.jpg">
+                        <div style="position: absolute; right: -3em; top: -7em;">
+                        <small style="font-size: 0.3em;">Image from <a href="https://pxhere.com/en/photo/969761">pxhere.com</a> CC0 Public Domain</small>
+                        <p style="font-size: 1.5em; font-weight: bold;">Camel on Quarkus</p>
+                        </div>
+                    </section>
                     <section id="quarkus-build-time-toolkit">
                         <div style="position: absolute; float: left; margin-left: -100px; margin-top: 0px;">
                         <img src="images/quarkus-logo.svg" style="">
                         <p style="font-size: 0.8em;">a build time toolkit</p>
                         </div>
-                        <img style="width: 100%; margin-bottom: 20px" alt="" src="images/jvm-graalvm-targets.svg">
+                        <img alt="" src="images/quarkus-workflow.svg">
                     </section>
                     <section id="why-camel-on-quarkus">
                         <h2>Why Camel on Quarkus?</h2>
@@ -280,7 +287,7 @@
                         </ul>
                     </section>-->
                 </section>
-                <section id="camel-k">
+                <section id="deploying-on-kubernetes">
                     <section>
                         <h1>How can we deploy on Kubernetes?</h1>
                     </section>
@@ -321,6 +328,14 @@
                         </ul>
                         <img class="fragment" alt="Can we do better?" src="images/can-we-do-better.png" style="float: left; position: absolute; margin-bottom: 0px;margin-left: -113px; z-index: 20">
                     </section>
+                </section>
+                <!--
+                    Luca: https://developers.redhat.com/topics/camel-k
+                    * Camel K operator smart enough to create kube resources needed to run the integration,
+                      such as ingess of it is a from(HTTP*) route
+                    * Scale to 0 when none of the components needs a persistent connection
+                -->
+                <section id="camel-k">
                     <section id="yes-we-can" data-state="no-footer" data-background-image="images/smilling-camel.jpg">
                         <div style="position: absolute; float: left; margin-left: -100px; margin-top: 450px;">
                         <p style="font-size: 2.5em; font-weight: bold;">Camel K</p>
@@ -337,14 +352,6 @@
                         <h2>Camel K demo</h2>
                         <p><a href="https://github.com/ppalaga/camel-quarkus-cnorris-demo#bonus-run-the-same-demo-with-camel-k">https://github.com/ppalaga/camel-quarkus-cnorris-demo</a></p>
                     </section>
-                </section>
-                <!--
-                    Luca: https://developers.redhat.com/topics/camel-k
-                    * Camel K operator smart enough to create kube resources needed to run the integration,
-                      such as ingess of it is a from(HTTP*) route
-                    * Scale to 0 when none of the components needs a persistent connection
-                -->
-                <section id="camel-k-internals">
                     <section id="how-camel-k-works">
                         <h4>How Camel K works</h4>
                         <img alt="Camel K internals" src="images/camel-k-internals.svg">
@@ -371,23 +378,23 @@
                         <h2>Knative</h2>
                         <ul>
                             <!--An extension of Kubernetes-->
-                            <li class="fragment">Building blocks for Serverless applications</li>
-                            <li class="fragment">CRDs and operators</li>
+                            <li>Building blocks for Serverless applications</li>
+                            <li>CRDs and operators</li>
                         </ul>
                         <table>
                             <tr>
-                                <td><img class="fragment" src="images/knative-serving.svg" style="height: 7.5em;"></td>
-                                <td><img class="fragment" src="images/knative-eventing.svg" style="height: 7.5em;"></td>
+                                <td><img src="images/knative-serving.svg" style="height: 7.5em;"></td>
+                                <td><img src="images/knative-eventing.svg" style="height: 7.5em;"></td>
                             </tr>
                         </table>
                         <p><a href="https://knative.dev">https://knative.dev</a></p>
                     </section>
                     <section>
                         <small>Camel</small>
-                        <h3>Knative Serving (1/2)</h3>
+                        <h3>Knative Serving</h3>
                         <img src="images/camel-knative-profile.svg">
                     </section>
-                    <section>
+                    <!-- <section>
                         <small>Camel</small>
                         <h3>Knative Serving (2/2)</h3>
                         <img src="images/knative-serving-flow-1.svg">
@@ -401,29 +408,32 @@
                         <small>Camel</small>
                         <h3>Knative Serving (2/2)</h3>
                         <img src="images/knative-serving-flow-3.svg">
-                    </section>
+                    </section> -->
                     <section>
                         <h4>Knative Eventing</h4>
                         <img src="images/knative-eventing-details.svg">
                         <p style="font-size: 0.9rem; margin: 0px;"><a href="https://cloudevents.io">https://cloudevents.io</a></p>
                     </section>
                     <section id="camel-as-knative-source">
-                        <h4>Camel as Knative event source</h4>
-                        <img class="fragment" src="images/knative-camel-source-def.svg" style="position: absolute; height: 5em; top: 7.6em; left: 7.0em;">
+                        <small>Camel as</small>
+                        <h4>Knative event source</h4>
+                        <img src="images/knative-camel-source-def.svg" style="position: absolute; height: 5em; top: 8.9em; left: 7.0em;">
                         <img src="images/knative-camel-source.svg" style="height: 9em;">
                         <br>
                         <br>
                     </section>
                     <section id="camel-as-knative-sink">
-                        <h4>Camel as Knative event sink</h4>
-                        <img class="fragment" src="images/knative-camel-sink-def.svg" style="position: absolute; height: 5em; top: 7.6em; left: 5.0em;">
+                        <small>Camel as</small>
+                        <h4>Knative event sink</h4>
+                        <img src="images/knative-camel-sink-def.svg" style="position: absolute; height: 5em; top: 8.9em; left: 5.0em;">
                         <img src="images/knative-camel-sink.svg" style="height: 9em;">
                         <br>
                         <br>
                     </section>
                     <section id="camel-as-knative-router">
-                        <h4>Camel as Knative Event Router</h4>
-                        <img class="fragment" src="images/knative-camel-eip-source.svg" style="position: absolute; height: 6em; top: 7.6em; left: 4.0em;">
+                        <small>Camel as</small>
+                        <h4>Knative Event Router</h4>
+                        <img src="images/knative-camel-eip-source.svg" style="position: absolute; height: 6em; top: 8.9em; left: 4.0em;">
                         <img src="images/knative-camel-eip.svg" style="height: 9em;">
                         <br>
                         <br>
@@ -433,7 +443,7 @@
                     <section id="camel-head" data-state="no-footer" data-background-image="images/camel-head.jpg">
                         <div style="position: absolute; float: left; margin-left: -150px; margin-top: 100px;">
                         <p style="font-size: 2.5em; font-weight: bold;">Camel<br>Kafka<br>Connector</p>
-                        <small style="font-size: 0.3em;">Image <a href="https://pxhere.com/en/photo/1070685">source</a> CC0 Public Domain</small>
+                        <small style="font-size: 0.3em;">Image from <a href="https://pxhere.com/en/photo/1070685">pxhere.com</a> CC0 Public Domain</small>
                         </div>
                     </section>
                     <section>
@@ -458,23 +468,30 @@
                         <img src="images/kafka-connect.svg">
                         <ul>
                             <li class="fragment">A framework to write Connectors</li>
-                            <li class="fragment">A runtime to run them</li>
+                            <li class="fragment">A runtime to run them
+                                <ul style="font-size: 1.5rem">
+                                    <li>Distributed or standalone</li>
+                                    <li>Automatic offset management</li>
+                                    <li>REST API to manage connectors</li>
+                                </ul>
+                            </li>
                         </ul>
                     </section>
                     <section>
                         <h2>Camel Kafka Connector</h2>
                         <img src="images/camel-kafka-connect-flow-single.svg">
+                        <p>Minimal (code-less) configuration</p>
                         <p>350+ Camel components <a href="https://camel.apache.org/camel-kafka-connector/latest/connectors.html" target="_blank">supported</a></p>
                     </section>
                 </section>
                 <section>
                     <section id="wrap-up">
                         <h2>Wrap up</h2>
-                        <ul>
-                            <li class="fragment">Apache Camel - an integration lib with 360+ connectors</li>
-                            <li class="fragment">Supersonic subatomic on Quarkus</li>
-                            <li class="fragment">Producer/Consumer/Router, scale to zero on Knative</li>
-                            <li class="fragment">Streaming data from/to Kafka using Camel Kafka Connect</li>
+                        <ul class="check" style="font-size: 2.3rem" >
+                            <li style="margin-bottom: 20px">Apache 🐪 = an integration lib with 360+ connectors</li>
+                            <li style="margin-bottom: 20px">🚀🔬 on Quarkus</li>
+                            <li style="margin-bottom: 20px">Producer/Consumer/Router, scale to 0️⃣  on Knative</li>
+                            <li style="margin-bottom: 20px">Stream data from/to Kafka</li>
                         </ul>
                     </section>
                     <section id="camel-links">
@@ -514,7 +531,7 @@
                 history: true,
                 controls: false,
                 margin: 0.01,
-                transition: 'fade', // none/fade/slide/convex/concave/zoom
+                transition: 'none', // none/fade/slide/convex/concave/zoom
                 dependencies: [
                     { src: 'plugin/markdown/marked.js' },
                     { src: 'plugin/markdown/markdown.js' },
@@ -523,6 +540,7 @@
                 ]
             });
             Reveal.configure({
+                pdfSeparateFragments: false,
                 keyboard: {
                     // Make stock laser pointers work
                     39: 'next', // Right Arrow
