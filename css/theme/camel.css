@@ -286,6 +286,7 @@ body {
   font-family: 'Roboto Mono', monospace; }
 
 .reveal pre code {
+  background: #3f3f3f;
   color: #dcdcdc;
   font-family: 'Roboto Mono', monospace; }
 
@@ -331,14 +332,14 @@ body {
   top: 0.12em; }
 
 .reveal ul.check li::before {
-  color: #d22128;
+  color: #006400;
   content: '\2713';
   font-size: 1.0em;
   left: -1.1em;
   position: absolute; }
 
 .reveal li ul.check li::before {
-  color: #d22128;
+  color: #006400;
   content: '\2713';
   font-size: 1.1em;
   left: -0.9em;
@@ -420,3 +421,31 @@ table.plaintable td {
 @media print {
   body {
     background: #fff; } }
+
+.reveal .slides section code.hljs mark.fragment,
+.reveal .slides section code.hljs mark.fragment .hljs-meta {
+  background-color: inherit;
+  opacity: 100;
+  visibility: inherit;
+  color: inherit; }
+
+.reveal .slides section code.hljs mark.fragment.visible,
+.reveal .slides section code.hljs mark.fragment.visible .hljs-meta {
+  background-color: #F0CA4D;
+  opacity: 100;
+  visibility: inherit;
+  color: #000; }
+
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out,
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out .hljs-meta {
+  background-color: inherit;
+  opacity: 100;
+  visibility: inherit;
+  color: inherit; }
+
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out.current-fragment,
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out.current-fragment .hljs-meta {
+  background-color: #F0CA4D;
+  opacity: 100;
+  visibility: inherit;
+  color: #000; }

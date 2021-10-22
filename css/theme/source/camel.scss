@@ -30,6 +30,7 @@ $mainFont: 'Roboto', Sans-Serif;
 $backgroundColor: #fff;
 $linkColor: #303284;
 $linkColorHover: lighten( $linkColor, 20% );
+$yellow: #F0CA4D;
 
 $selectionBackgroundColor: rgba(79, 64, 28, 0.99);
 
@@ -59,6 +60,7 @@ $heading4Size: 1.0em;
 }
 
 .reveal pre code  {
+  background: #3f3f3f;
   color: #dcdcdc;
   font-family: 'Roboto Mono', monospace;
 }
@@ -110,7 +112,7 @@ $heading4Size: 1.0em;
 }
 
 .reveal ul.check li::before {
-  color: #d22128;
+  color: #006400;
   content: '\2713';
   font-size: 1.0em;
   left: -1.1em;
@@ -118,7 +120,7 @@ $heading4Size: 1.0em;
 }
 
 .reveal li ul.check li::before {
-  color: #d22128;
+  color: #006400;
   content: '\2713';
   font-size: 1.1em;
   left: -0.9em;
@@ -214,4 +216,36 @@ table.plaintable td {
   body {
      background: #fff;
   }
+}
+
+.reveal .slides section code.hljs mark.fragment,
+.reveal .slides section code.hljs mark.fragment .hljs-meta {
+  background-color: inherit;
+  opacity: 100;
+  visibility: inherit;
+  color: inherit;
+}
+
+.reveal .slides section code.hljs mark.fragment.visible,
+.reveal .slides section code.hljs mark.fragment.visible .hljs-meta {
+  background-color: $yellow;
+  opacity: 100;
+  visibility: inherit;
+  color: #000;
+}
+
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out,
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out .hljs-meta  {
+  background-color: inherit;
+  opacity: 100;
+  visibility: inherit;
+  color: inherit;
+}
+
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out.current-fragment,
+.reveal .slides section code.hljs mark.fragment.fade-in-then-out.current-fragment .hljs-meta {
+  background-color: $yellow;
+  opacity: 100;
+  visibility: inherit;
+  color: #000;
 }
