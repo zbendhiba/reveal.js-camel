@@ -110,6 +110,9 @@
                 </section>
                 <section id="skip-mojos">
                     <section id="why-skip-mojos">
+                        <p><code>-DskipTests</code></p>
+                    </section>
+                    <section id="why-skip-mojos">
                         <h2>Why to skip mojos?</h2>
                         <ul>
                             <li>After pulling from team git repository</li>
@@ -195,40 +198,44 @@
                             <li class="fragment">Inject fields (potentially expensive objects)</li>
                             <li class="fragment">Call <code>Mojo.execute()</code></li>
                         </ul>
+                        <div class="fragment" style="float: left; position: absolute; bottom: 100px; margin-left: 100px; z-index: 20; font-size: 50px; font-weight: bold; background-color: #ffFFFFcc; padding: 20px; color: #ff0000;">How can we avoid all of this?</div>
+                    </section>
+                    <section id="remove-plugins-from-the-execution-plan">
+                        <h2>Remove plugins<br><small>from Maven execution plan</small><br>altogether</h2>
                     </section>
                     <section id="hide-plugins-in-a-profile">
-                        <pre style="width: 100%; margin: 0px; font-size: 0.4em"><code class="hljs xml" style="max-height: unset;"><project>
-    ...                      <!-- Proper skipping -->
-    <build>
-        <plugins>
-            <!-- Only plugins essential for the fast build -->
-            <plugin><artifactId>maven-compile-plugin</artifactId></plugin>
-            <plugin><artifactId>maven-jar-plugin</artifactId></plugin>
-            <plugin><artifactId>maven-install-plugin</artifactId></plugin>
+                        <pre style="width: 100%; margin: 0px; font-size: 0.4em"><code class="hljs xml" style="max-height: unset;" data-noescape data-trim>&lt;project&gt;
+    ...                      &lt;!-- Proper skipping --&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            <mark class="fragment fade-in-then-out" data-fragment-index="1">&lt;!-- Only plugins essential for the fast build --&gt;</mark>
+            &lt;plugin&gt;&lt;artifactId&gt;maven-compile-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
+            &lt;plugin&gt;&lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
+            &lt;plugin&gt;&lt;artifactId&gt;maven-install-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
             ...
-        </plugins>
-    </build>
-    <profiles>
-        <profile>
-            <id>full</id>
-            <activation>
-                <property>
-                    <name>!quickly</name><!-- Active by default unless -Dquickly is passed -->
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <!-- All other plugins -->
-                    <plugin><artifactId>maven-enforcer-plugin</artifactId></plugin>
-                    <plugin><artifactId>maven-surefire-plugin</artifactId></plugin>
-                    <plugin><artifactId>maven-failsafe-plugin</artifactId></plugin>
-                    <plugin><artifactId>groovy-maven-plugin</artifactId></plugin>
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+<span class="fragment" data-fragment-index="2">    &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;full&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;property&gt;
+                    &lt;name&gt;!quickly&lt;/name&gt;<mark class="fragment fade-in-then-out" data-fragment-index="4">&lt;!-- Active by default unless -Dquickly is passed --&gt;</mark>
+                &lt;/property&gt;
+            &lt;/activation&gt;
+            &lt;build&gt;
+                &lt;plugins&gt;
+                    <mark class="fragment fade-in-then-out" data-fragment-index="3">&lt;!-- All other plugins --&gt;</mark>
+                    &lt;plugin&gt;&lt;artifactId&gt;maven-enforcer-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
+                    &lt;plugin&gt;&lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
+                    &lt;plugin&gt;&lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
+                    &lt;plugin&gt;&lt;artifactId&gt;groovy-maven-plugin&lt;/artifactId&gt;&lt;/plugin&gt;
                     ...
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-</project></code></pre>
+                &lt;/plugins&gt;
+            &lt;/build&gt;
+        &lt;/profile&gt;
+    &lt;/profiles&gt;</span>
+&lt;/project&gt;</code></pre>
                     </section>
                     <section id="mvn-clean-install-quickly">
                         <p>&nbsp;</p>
@@ -297,11 +304,11 @@ End of Maven init: 1634117025765</span>
                     </section>
                     <section id="mvnd-intro">
                         <p><img src="images/mvnd-logo.svg" style="width: 100px; vertical-align: middle; margin-bottom: 10px;"> - the Maven Daemon</p>
-                        <p style="font-size: 1.5rem;"><a href="https://github.com/mvndaemon/mvnd" target="_blank">https://github.com/mvndaemon/mvnd</a></p>
+                        <p style="font-size: 1.5rem;"><a href="https://github.com/apache/maven-mvnd" target="_blank">https://github.com/apache/maven-mvnd</a></p>
                         <ul>
                             <li>Started by <a href="https://twitter.com/gnodet">Guillaume Nodet</a> in 2019</li>
                             <li>24 releases since then</li>
-                            <li>Currently <a href="https://www.mail-archive.com/dev@maven.apache.org/msg124559.html">being donated</a> to the ASF Maven Project</li>
+                            <li>Donated to the ASF Maven Project in December 2021</li>
                         </ul>
                         <p><a href="https://twitter.com/mvndaemon" rel="nofollow"><img src="https://camo.githubusercontent.com/eca91a719d9b5623bbf24a22ddc4ade4170bf95daf20921f561d1140887db9c1/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f75726c2f68747470732f747769747465722e636f6d2f6d766e6461656d6f6e2e7376673f7374796c653d736f6369616c266c6162656c3d466f6c6c6f772532302534306d766e6461656d6f6e" alt="Twitter" data-canonical-src="https://img.shields.io/twitter/url/https/twitter.com/mvndaemon.svg?style=social&amp;label=Follow%20%40mvndaemon" style="max-width:100%;"></a></p>
                     </section>
@@ -491,7 +498,7 @@ The Takari Smart Builder is using a more advanced approach of dependency-path in
                         <h2>Local repository access</h2>
                         <ul>
                             <li>Two modules may download the same artifact concurrently</li>
-                            <li>Solved in <code>mvnd</code> 0.7.0 (to be released) and Maven 4</li>
+                            <li>Solved in <code>mvnd</code> 0.7.1</li>
                         </ul>
                     </section>
                     <section id="broken-plugins">
