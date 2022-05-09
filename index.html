@@ -26,7 +26,7 @@
                 <img src="images/" alt="" style="position: absolute;bottom: 0;">
             </div> -->
             <div id="footer" class="footer">
-                <img src="css/theme/camel-assets/images/camel.svg" class="left"><a href="https://twitter.com/zinebbendhiba">@ZinebBendhiba</a> <a href="https://twitter.com/ppalaga">@ppalaga</a><img src="images/kube_logo_black_with_text.svg" class="right">
+                <img src="css/theme/camel-assets/images/camel.svg" class="left"><a href="https://twitter.com/zinebbendhiba">@ZinebBendhiba</a> <a href="https://twitter.com/ppalaga">@ppalaga</a><img src="images/quarkus-logo.svg" class="right">
             </div>
             <div class="slides">
                 <section>
@@ -34,25 +34,35 @@
                         <p>The original reveal.js version of these slides looks a bit better than this PDF export:</p>
                         <p><a href="https://peter.palaga.org/presentations/210317-camel/index.html#/">https://peter.palaga.org/presentations/210317-camel/index.html#/</a></p>
                     </section>-->
-                    <section data-state="no-footer">
-                        <img data-src="css/theme/camel-assets/images/camel.svg" alt="Apache Camel K" class="plain" style="width: 8em">
-                        <br><br>
+                    <section data-state="no-footer" id="cover" data-background-image="images/Desert_Camels_Silhouette_461244.jpg">
+                        <!--<img data-src="css/theme/camel-assets/images/camel.svg" alt="Apache Camel K" class="plain" style="width: 8em">
+                        <br><br>-->
                         <h2>Integrating systems</h2>
                         <h4 style="font-size: 28px">in the age of</h4>
                         <h3>Quarkus, Knative and Kafka</h4>
                         <p>&nbsp;</p>
-                        <p>Zineb Bendhiba & Peter Palaga</p>
-                        <p style="font-size: 28px;">
-                            <a href="https://twitter.com/zinebbendhiba">@ZinebBendhiba</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/ppalaga">@ppalaga</a>&nbsp;&nbsp;&nbsp;
-                        </p>
-                    </section>
-                    <section id="about-me">
-                        <img src="images/red-hat-integration-logo.svg" style="height: 2em;">
-                        <img src="css/theme/camel-assets/images/camel.svg" style="height: 2em; margin-left: 2em; ">
                         <p>&nbsp;</p>
-                        <p>Our main job:</p>
-                        <h2><a href="https://github.com/apache/camel-quarkus" target="_blank">Camel Quarkus</a></h2>
-                        <p>porting Camel componets to Quarkus</p>
+                        <p style="width: 95%; text-align: right; font-size: 24px; color: #d8a03f; ">
+                            Zineb Bendhiba<br>
+                            <a href="https://twitter.com/zinebbendhiba" style="font-size: 18px; color:#83b6d9 ">@ZinebBendhiba</a>
+                        </p>
+                        <p style="width: 95%; text-align: right; font-size: 24px; color: #d8a03f; ">
+                            Peter Palaga<br>
+                            <a href="https://twitter.com/ppalaga" style="font-size: 18px; color:#83b6d9 ">@ppalaga</a>
+                        </p>
+                        <p style="width: 95%; text-align: right; font-size: 24px; color: #aaaaaa; ">
+                            <br>
+                            <small style="font-size: 0.3em;">Image from <a href="https://www.1zoom.me/en/wallpaper/461244/z9357.7/" style="color:#83b6d9 ">1zoom.me</a></small>
+                        </p>
+
+                    </section>
+                    <section id="about-us">
+                        <p><small>About us</small></p>
+                        <p>&nbsp;</p>
+                        <img src="images/red-hat-integration-logo.svg" style="height: 2em;">
+                        <img src="css/theme/camel-assets/images/camel.svg" style="height: 2em; margin-left: 3em; ">
+                        <img src="images/quarkus-logo.svg" style="height: 1.2em; margin-left: 3em; ">
+                        <p>&nbsp;</p>
                     </section>
                     <!--<section id="mvnd">
                         <p><code>mvnd</code> - the Maven Daemon</p>
@@ -68,7 +78,8 @@
                     </section>
                     <section id="apache-camel" data-state="no-footer" data-background-image="images/smilling-camel.jpg">
                         <div style="position: absolute; float: left; margin-left: -0px; margin-top: 450px;">
-                        <p style="font-size: 1.5em; font-weight: bold;">Apache Camel</p>
+                        <p style="font-size: 1.5em; font-weight: bold; margin-bottom: 5px">Apache Camel</p>
+                        <p style="font-size: 0.7em; margin-top: 0px"><a href="http://camel.apache.org/">http://camel.apache.org/</a></p>
                         <small style="font-size: 0.3em;">Image by <a href="https://www.flickr.com/photos/lanzen/5984113332">Anders Lanzen</a> CC BY-NC-SA 2.0</small>
                         </div>
                     </section>
@@ -83,21 +94,12 @@
                     </section>-->
                 </section>
                 <section id="what-is-apache-camel">
-                    <section>
-                        <h2>What is Apache Camel?</h2>
-                        <a href="http://camel.apache.org/">http://camel.apache.org/</a>
-                    </section>
-                    <section>
-                        Apache Camel is...
-                        <h2>An integration library</h2>
-
-                        <br>
-                        <br>
+                    <section id="camel-overview">
                         <img alt="Systems integration" src="images/system1-system2.svg">
-
                     </section>
-                    <section>
-                        <small>Apache Camel is based on</small>
+                    <section id="transform" data-background-image="images/pasta-maker.jpg">
+                    </section>
+                    <section id="eips">
                         <h4>Enterprise Integration Patterns (EIP)</h4>
                         <img alt="EIPs" src="images/eips.svg">
                         <br>
