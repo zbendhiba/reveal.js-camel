@@ -261,17 +261,17 @@
                              </tbody>
                         </table>
                     </section>
-                    <section id="devjoy">
+                    <!--<section id="devjoy">
                         <small>Why Quarkus?</small>
                         <h2>Developer joy</h2>
                         <ul class="check">
                             <li class="fragment">Live reload:<br>
                                 <code>mvn compile quarkus:dev</code></li>
-                            <li class="fragment">Isolation from GraalVM CLI/SPI config</li>
-                            <li class="fragment">Rich ecosystem of extensions</li>
+                                <li class="fragment">Isolation from GraalVM CLI/SPI config</li>
+                                <li class="fragment">Rich ecosystem of extensions</li>
                         </ul>
-                    </section>
-
+                    </section>-->
+                        
                     <section>
                         <img src="images/camel-quarkus-with-text-vertical.svg" style="height: 2em; float: right">
                         <h2>Camel Quarkus</h2>
@@ -284,9 +284,9 @@
                         <p></p>
                     </section>
                     <section>
-                        <h1>Camel Quarkus Demo</h1>
-                        <br><br>
-                        <p>Demo code:<br><a href="https://github.com/ppalaga/camel-quarkus-cnorris-demo" target="_blank">github.com/ppalaga/camel-quarkus-cnorris-demo</a></p>
+                        <h4>Camel Quarkus Demo</h4>
+                        
+                        <img alt="Camel Quarkus demo" src="images/cq-demo-part1.png">
                         <aside class="notes">
 
                         Demo script
@@ -313,6 +313,37 @@
                             <li>Send some requests, show RSS</li>
                         </ul>
                         </aside>
+                    </section>
+                    <section>
+                        <h4>Camel Quarkus Demo</h4>
+                        
+                        <img alt="Camel Quarkus demo" src="images/cq-demo-part2.png">
+                        <aside class="notes">
+
+                            Demo script
+                            <ul>
+                                <li>Visit <a href="http://code.quarkus.io">code.quarkus.io</a> select extensions</li>
+                                <li>Show how to download, do not download</li>
+                                <li>Switch to a ready IDE</li>
+                                <li>Show the pom.xml file: BOM, extensions, application.properties</li>
+                                <li>Export the secrets</li>
+                                <li>`mvn compile quarkus:dev`</li>
+                                <li>Route1 telegram -> log</li>
+                                <li>Expand Route1 telegram -> transformation('Kafka: ${body}') -> kafka</li>
+                                <li>Create Route2 kafka -> log</li>
+                                <li>Expand Route2 kafka -> transformation('DDB: ${body}') -> ddb</li>
+                                <li>Create Route3 platformhttp -> ddb</li>
+                            </ul>
+                            Native mode
+                            <ul>
+                                <li>Start compilation via `mvn package -Pnative`</li>
+                                <li>Do not wait for it to finish, just show the native executable compiled beforehead</li>
+                                <li>Show the size on disk</li>
+                                <li>Maybe a simple app - just telegram -> log so that we do not have to start all the containers?</li>
+                                <li>Start, show the startup time</li>
+                                <li>Send some requests, show RSS</li>
+                            </ul>
+                            </aside>
                     </section>
                     <!--<section>
                         <h1>Camel Quarkus links</h1>
