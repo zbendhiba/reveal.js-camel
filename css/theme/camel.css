@@ -355,9 +355,9 @@ html #footer {
   background-color: #e1e1e1;
   bottom: 3px;
   display: block;
-  font-size: 0.85em;
+  font-size: 0.55em;
   height: 50px;
-  line-height: 1.6em;
+  line-height: 2.8em;
   position: absolute;
   text-align: center;
   width: 100%;
@@ -381,8 +381,8 @@ html #footer {
 
 #footer img.right {
   float: right;
-  height: 40px;
-  margin-top: 6px;
+  height: 30px;
+  margin-top: 12px;
   margin-right: 10px;
   margin-bottom: -5px;
   margin-left: 6px;
